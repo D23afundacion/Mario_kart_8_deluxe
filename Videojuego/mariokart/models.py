@@ -1,25 +1,26 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class Usuarios(models.Model):
-    id = models.IntegerField()
+class Usuarios(AbstractUser):
+    id = models.CompositePrimaryKey
     nombre = models.CharField(max_length=100)
     correo = models.CharField(max_length=100)
     clave = models.CharField(max_length=100)
     monedas = models.IntegerField()
 
 class Copas (models.Model):
-    id = models.IntegerField()
+    id = models.CompositePrimaryKey
     nombre = models.CharField(max_length=100)
     img = models.TextField()
 
 class Pistas (models.Model):
-    id = models.IntegerField()
+    id = models.CompositePrimaryKey
     nombre = models.CharField(max_length=100)
     img = models.TextField()
     copa_id = models.ForeignKey(Copas.id , on_delete=models.DO_NOTHING)
 
 class Equipamientos(models.Model):
-    id = models.IntegerField()
+    id = models.CompositePrimaryKey
     nombre = models.CharField(max_length=100)
     img = models.TextField()
     tipo_equipamiento = [
